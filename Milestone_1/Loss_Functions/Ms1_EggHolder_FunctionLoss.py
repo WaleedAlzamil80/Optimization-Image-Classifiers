@@ -11,6 +11,7 @@ def EggHolder(X):
     Returns:
         tf.Tensor: The value of the EggHolder function at X.
     """
+    X = tf.cast(X, dtype=tf.float32)
     x1, x2 = X[0], X[1]
 
     term1 = tf.multiply(-1 * (x2 + 47), tf.sin(tf.sqrt(tf.abs(x2 + tf.multiply(x1, 0.5) + 47))))
