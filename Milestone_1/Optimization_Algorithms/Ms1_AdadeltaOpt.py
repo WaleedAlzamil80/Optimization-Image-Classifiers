@@ -1,7 +1,7 @@
- import numpy as np
- import tensorflow as tf
+import numpy as np
+import tensorflow as tf
 
-def Adadelta(loss_func, X_init, S_init, loss_val, eta = 0.01, beta = 0.99, epsilon = 1e-8):
+def Adadelta(loss_func, X_init, S_init, X_vals, loss_vals, eta = 0.01, beta = 0.99, epsilon = 1e-8):
   """
   Adadelta (known as RMSprop) optimization algorithm for updating the values of a given variable.
 
@@ -12,7 +12,8 @@ def Adadelta(loss_func, X_init, S_init, loss_val, eta = 0.01, beta = 0.99, epsil
     - S_init: tf.Variable, the initial values for the second moment estimates (RMSprop).
     - beta: float, the amount used to control how the learning rate depend on the last values (default is 0.99)
     - eps: float, Ensure S in not zero by adding this number to it (default is 1e-8).
-    - loss_val: list(), empty list used to save the loss values at each iteration
+    - X_vals: list(), empty list used to save X at each iteration.
+    - loss_vals: list(), empty list used to save the loss values at each iteration.
     
   Returns:
     None
@@ -35,4 +36,8 @@ def Adadelta(loss_func, X_init, S_init, loss_val, eta = 0.01, beta = 0.99, epsil
   S_init.assign(S)
 
   # calc the loss value and append it to the list
-  loss_val.append(loss_func(X_init))
+  loss_vals.append(tf.squeeze (loss_func(X_init)))
+
+  #append X to the list
+  X_vals.append(X_init.numpy())
+

@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
-def Adam(loss_func, X_init, V_init, S_init, loss_val, eta = 0.01, beta_1 = 0.9, beta_2 = 0.99, eps = 1e-8, bias_correction = False, t = 1):
+def Adam(loss_func, X_init, V_init, S_init, X_vals, loss_vals, eta=0.01, beta_1=0.9, beta_2=0.99, eps=1e-8, bias_correction=False, t=1):
     """
     Adam optimization algorithm for updating the values of a given variable.
 
@@ -17,7 +17,8 @@ def Adam(loss_func, X_init, V_init, S_init, loss_val, eta = 0.01, beta_1 = 0.9, 
         - eps: float, Ensure S in not zero by adding this number to it (default is 1e-8)
         - bias_correction: boolean, to limit the first iteration from being biased (default is True)
         - t: int, iteration number for bias correction
-        - loss_val: list(), empty list used to save the loss values at each iteration.
+        - X_vals: list(), empty list used to save X at each iteration.
+        - loss_vals: list(), empty list used to save the loss values at each iteration.
 
     Returns:
         None
@@ -50,4 +51,7 @@ def Adam(loss_func, X_init, V_init, S_init, loss_val, eta = 0.01, beta_1 = 0.9, 
     S_init.assign(S)
 
     # calc the loss value and append it to the list
-    loss_val.append(loss_func(X_init))
+    loss_vals.append(tf.squeeze (loss_func(X_init)))
+
+    #append X to the list
+    X_vals.append(X_init.numpy())
