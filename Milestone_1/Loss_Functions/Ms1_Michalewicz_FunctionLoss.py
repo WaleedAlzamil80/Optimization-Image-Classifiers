@@ -19,4 +19,4 @@ def Michalewicz(X, m = 10):
     M = tf.sin(tf.math.multiply(tf.math.multiply(X, X), i) / np.pi)**(2 * m)
     S = tf.math.multiply(tf.sin(X), M)
 
-    return (-1 * tf.reduce_sum(S))
+    return (-1 * tf.reduce_sum(S, 0))
