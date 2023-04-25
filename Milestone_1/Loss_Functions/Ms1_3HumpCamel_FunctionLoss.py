@@ -6,10 +6,10 @@ def ThreeHumpCamel(X):
     Computes the value of the 3-Hump Camel function at a given point x using TensorFlow.
     
     Parameters:
-        X (tf.Tensor): A TensorFlow tensor representing the decision variables.
-    
+        X (tf.Tensor of shape (2, n)): A TensorFlow tensor representing the decision variable.
+
     Returns:
-        tf.Tensor: The value of the 3-Hump Camel function at X.
+        tf.Tensor of shape (n, ): The value of the EggHolder function at X.
     """
     X = tf.cast(X, dtype=tf.float32)  # Cast X to float32
     X_square = tf.square(X)
