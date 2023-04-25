@@ -1,3 +1,6 @@
+import numpy as np
+import tensorflow as tf
+
 def MATYAS(X):
     """
     Computes the value of the MATYAS function at a given point x using TensorFlow.
