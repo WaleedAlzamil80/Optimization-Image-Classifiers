@@ -28,7 +28,7 @@ def plot (loss_function, X_vals, loss_vals ):
   ax.plot_wireframe(X1_grid, X2_grid, Z, color='black', linewidth=0.1,  alpha=0.2)
   ax.set_xlabel('X1')
   ax.set_ylabel('X2')
-  ax.set_zlabel('Loss Function Value')
+  #ax.set_zlabel('Loss Function Value')
   ax.xaxis.labelpad = 20
 
 
