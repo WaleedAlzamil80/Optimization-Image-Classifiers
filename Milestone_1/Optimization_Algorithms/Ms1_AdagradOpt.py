@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 
+
 def Adagrad(loss_func, X_init, S_init, loss_val, X_val, eta = 0.01, eps = 1e-8, bias_correction = False, t = 1):
   """
   Adabtive gradient(Adagrad) optimization algorithm for updating the values of a given variable.
@@ -19,12 +20,12 @@ def Adagrad(loss_func, X_init, S_init, loss_val, X_val, eta = 0.01, eps = 1e-8, 
     None
   """
 
-  with tf.GradientTape(persistent=True) as t:
+  with tf.GradientTape(persistent=True) as tape:
     # Compute the current loss
     current_loss = loss_func(X_init)
 
   # Compute the gradient of the loss with respect to the variables
-  dx = t.gradient(current_loss, X_init)
+  dx = tape.gradient(current_loss, X_init)
 
   # Compute the estimate (RMSprop)
   S = S_init + dx**2      # RMSprop

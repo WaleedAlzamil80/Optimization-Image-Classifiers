@@ -16,7 +16,7 @@ def Trid(X):
         if i == (X.shape[0] - 1):
             break
         sum0 += X[i+1]*X[i]
-    return (tf.reduce_sum((X - 1)**2) - sum0)
+    return (tf.reduce_sum((X - 1)**2, 0) - sum0)
 
 
 def TridOptmValue(X):

@@ -20,12 +20,12 @@ def GDM(loss_func, X_init, V_init, loss_val, X_val, eta = 0.01, beta = 0.9, bias
       None
     """
 
-    with tf.GradientTape(persistent=True) as t:
+    with tf.GradientTape(persistent=True) as tape:
         # Compute the current loss
         current_loss = loss_func(X_init)
 
     # Compute the gradient of the loss with respect to the variables
-    dx = t.gradient(current_loss, X_init)
+    dx = tape.gradient(current_loss, X_init)
 
     # Compute the estimate (momentum)
     V = beta * V_init + (1 - beta) * dx
