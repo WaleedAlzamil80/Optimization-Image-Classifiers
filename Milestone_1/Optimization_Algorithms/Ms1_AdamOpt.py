@@ -37,7 +37,6 @@ def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 
     # Compute the first and second moment estimates (momentum and RMSprop)
     V = (beta_1 * V_init) + (1 - beta_1) * dx      # momentum
     S = (beta_2 * S_init) + (1 - beta_2) * (dx**2) # RMSprop
-    t = t + 1
 
     # bias correction
     if bias_correction:
@@ -49,12 +48,8 @@ def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 
     
     # line search (finding the optimal value for the learning rate)
     if line_search:
-      if t == 1:
-        for i in range(1000): 
-          eta = LineSearch(X_init, loss_func, tf.Variable(eta)).numpy()
-      else:
         for i in range(10):
-          eta = LineSearch(X_init, loss_func, tf.Variable(eta)).numpy()
+            eta = LineSearch(X_init, loss_func, tf.Variable(eta)).numpy()
 
     # update the variables using Adam update rule
     X_init.assign_sub(eta * V_corrected / (tf.sqrt(S_corrected) + eps))

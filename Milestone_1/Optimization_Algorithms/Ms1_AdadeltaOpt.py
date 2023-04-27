@@ -29,8 +29,7 @@ def Adadelta(loss_func, X_init, S_init, loss_val, X_val, eta = 0.01, beta = 0.99
 
   # Compute the estimate (RMSprop)
   S = beta * S_init + (1 - beta) * dx**2      # RMSprop
-  t = t + 1
-  
+
   # bias correction
   if bias_correction:
       S_corrected = S / (1 - tf.pow(beta, t))

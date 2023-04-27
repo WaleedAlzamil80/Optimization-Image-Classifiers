@@ -29,7 +29,6 @@ def GDM(loss_func, X_init, V_init, loss_val, X_val, eta = 0.01, beta = 0.9, bias
 
     # Compute the estimate (momentum)
     V = beta * V_init + (1 - beta) * dx
-    t = t + 1
 
     # bias correction
     if bias_correction:
@@ -39,12 +38,8 @@ def GDM(loss_func, X_init, V_init, loss_val, X_val, eta = 0.01, beta = 0.9, bias
     
     # line search (finding the optimal value for the learning rate)
     if line_search:
-      if t == 1:
-        for i in range(1000): 
-          eta = LineSearch(X_init, loss_func, tf.Variable(eta)).numpy()
-      else:
         for i in range(10):
-          eta = LineSearch(X_init, loss_func, tf.Variable(eta)).numpy()
+            eta = LineSearch(X_init, loss_func, tf.Variable(eta)).numpy()
 
     # Update the variables using the momentum update rule
     X_init.assign_sub(eta * V_corrected)

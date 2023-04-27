@@ -27,7 +27,6 @@ def Adagrad(loss_func, X_init, S_init, loss_val, X_val, eta = 0.01, eps = 1e-8):
   # Compute the estimate (RMSprop)
   S = S_init + dx**2      # RMSprop
 
-
   # Update the variables using the Adagrad update rule
   X_init.assign_sub(eta * dx / (tf.sqrt(S) + eps))
     
