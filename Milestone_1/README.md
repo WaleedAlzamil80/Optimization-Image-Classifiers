@@ -24,8 +24,6 @@ where x ∈ Rn is the decision variable, f : Rn → R is the objective function.
 
 ## Test Functions
 
-### Intro
-
 We used test functions from the SFU optimization test function library, including the Eggholder function, Trid function, Matyas function, Three-Hump Camel function, Michalewicz function, and Styblinski-Tang function. These test functions represent different types of objective functions, including those with many local minima, bowl-shaped functions, plate-shaped functions, Valley-Shaped, Valley-Shaped, and other shapes. Additionally, we tested each algorithm on each function in a range of search spaces with different dimensions.
 
 ## How to Use
