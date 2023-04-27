@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 from LineSearch import *
 
-def GDM(loss_func, X_init, V_init, loss_val, X_val, eta = 0.01, beta = 0.9, bias_correction = False, line_search = False):
+def GDM(loss_func, X_init, V_init, loss_val, X_val, eta = 0.01, beta = 0.9, bias_correction = False, line_search = False, t = 0):
     """
     Gradient Descent with Momentum optimization algorithm for updating the values of a given variable.
 

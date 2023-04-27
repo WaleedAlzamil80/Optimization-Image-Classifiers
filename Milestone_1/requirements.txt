@@ -1,0 +1,9 @@
+numpy==1.21.4
+tensorflow==2.7.0
+
+# This package is needed for 2D plotting
+matplotlib==3.5.0
+seaborn==0.11.2
+
+# This package is needed for 3D plotting
+mpl_toolkits==0.2.4
