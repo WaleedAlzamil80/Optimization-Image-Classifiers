@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 from LineSearch import *
 
-def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 = 0.9, beta_2 = 0.99, eps = 1e-8, line_search = False, bias_correction = False, t = 1):
+def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 = 0.9, beta_2 = 0.99, eps = 1e-8, line_search = False, bias_correction = False, t = 0):
     """
     Adam optimization algorithm for updating the values of a given variable.
 

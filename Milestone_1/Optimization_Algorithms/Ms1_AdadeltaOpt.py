@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 
-def Adadelta(loss_func, X_init, S_init, loss_val, X_val, eta = 0.01, beta = 0.99, eps = 1e-8, bias_correction = False, t = 1):
+def Adadelta(loss_func, X_init, S_init, loss_val, X_val, eta = 0.01, beta = 0.99, eps = 1e-8, bias_correction = False, t = 0):
   """
   Adadelta (known as RMSprop) optimization algorithm for updating the values of a given variable.
 
@@ -29,7 +29,8 @@ def Adadelta(loss_func, X_init, S_init, loss_val, X_val, eta = 0.01, beta = 0.99
 
   # Compute the estimate (RMSprop)
   S = beta * S_init + (1 - beta) * dx**2      # RMSprop
-  t = t + 1  
+  t = t + 1
+  
   # bias correction
   if bias_correction:
       S_corrected = S / (1 - tf.pow(beta, t))
