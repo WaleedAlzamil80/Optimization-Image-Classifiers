@@ -1,6 +1,7 @@
-import tensorflow as tf
 import numpy as np
+import tensorflow as tf
 from LineSearch import *
+from DecayLearningRate import *
 
 def SGD(loss_func, X_init, loss_val, X_val, eta = 0.01, line_search = False):
   """
@@ -11,8 +12,8 @@ def SGD(loss_func, X_init, loss_val, X_val, eta = 0.01, line_search = False):
     - X_init: tf.Variable, the initial variable values to be updated.
     - eta: float, the learning rate used to control the size of the update steps (default is 0.01).
     - loss_val: list(), empty list used to save the loss values at each iteration
-    - line_search: boolean, to determine if we will search for the optimal value of the learning rate at each step (default is False). 
-
+    - line_search: boolean, to determine if we will search for the optimal value of the learning rate at each step (default is False).
+  
   Returns:
     None
   """
@@ -23,11 +24,11 @@ def SGD(loss_func, X_init, loss_val, X_val, eta = 0.01, line_search = False):
 
   # Compute the gradient of the loss with respect to the variables
   dx = tape.gradient(current_loss, X_init)
-
-  # line search (finding the optimal value for the learning rate
+  
+  # line search (finding the optimal value for the learning rate)
   if line_search:
-      for i in range(10):
-        eta = LineSearch(X_init, loss_func, tf.Variable(eta)).numpy()
+    for i in range(10):
+      eta = LineSearch(X_init, loss_func, tf.Variable(eta)).numpy()
 
   # Update the variables using the SGD update rule
   X_init.assign_sub(eta * dx)

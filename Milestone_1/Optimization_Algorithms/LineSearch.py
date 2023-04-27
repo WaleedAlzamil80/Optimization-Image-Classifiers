@@ -3,7 +3,7 @@ import numpy as np
 
 def LineSearch(X, loss_func, eta = 0.01):
     """
-    Adam optimization algorithm for updating the values of a given variable.
+    line search is a method to determine an anappropriate step length (learning rate -eta-) usually it's one-dimensional search
 
     Args:
         - X: tf.Variable, the variable value at which we want to the the optimal learning rate.
