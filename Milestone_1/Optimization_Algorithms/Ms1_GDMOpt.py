@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-from LineSearch import *
+from Optimization_Algorithms.LineSearch import *
 
 def GDM(loss_func, X_init, V_init, loss_val, X_val, eta = 0.01, beta = 0.9, bias_correction = False, line_search = False, t = 0, decay_type=None, decay_rate=None):
     """

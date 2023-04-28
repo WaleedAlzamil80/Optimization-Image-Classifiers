@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
-from LineSearch import *
-from DecayLearningRate import *
+from Optimization_Algorithms.LineSearch import *
+#from DecayLearningRate import *
 
 def SGD(loss_func, X_init, loss_val, X_val, eta = 0.01, line_search = False):
   """
