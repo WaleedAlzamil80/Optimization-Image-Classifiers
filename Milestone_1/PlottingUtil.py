@@ -43,7 +43,7 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
   Z = loss_function([X1_grid, X2_grid])
 
 
-  fig = plt.figure(figsize=(14, 8) )  # Double the width of the figure
+  fig = plt.figure(figsize=(18, 14), dpi=160)  # Double the width of the figure
   gs = fig.add_gridspec(1, 2, width_ratios=[2, 1,])  # Define 1 row, 2 columns grid with 2:1 width ratio
   ax = fig.add_subplot(gs[0, 0], projection='3d')  # Add subplot on the left
 
@@ -115,6 +115,7 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
   ax.set_zlim(min_Z  , max_Z - offset)
 
   Text = Data[idx][0] +"_"+ Data[idx][1] + "_Lrate:" + str(Data[idx][2]) + "_Bcorr:" +  str(Data[idx][3]) + "_Lsearch:" +  str(Data[idx][4]) +".png"
+
 
 
   plt.savefig("imgs/"+Text)
