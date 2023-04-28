@@ -4,7 +4,15 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
-def plot (loss_function, X_vals, loss_vals ):
+def plot (Data, idx):
+
+  loss_function = eval(Data[idx][0])
+
+
+  X_vals = Data[idx][5]
+  loss_vals = Data[idx][6]
+
+  
   # Define the range of X1 and X2 values to plot the StyblinskiTang function
   rangeX1, rangeX2 =   abs(X_vals[0])
 
@@ -21,13 +29,29 @@ def plot (loss_function, X_vals, loss_vals ):
   Z = loss_function([X1_grid, X2_grid])
 
 
-  # Plot the StyblinskiTang function
-  fig = plt.figure(figsize=(10, 8))
-  ax = fig.add_subplot(111, projection='3d')
+  fig = plt.figure(figsize=(12, 8))  # Double the width of the figure
+  gs = fig.add_gridspec(1, 2, width_ratios=[2, 1,])  # Define 1 row, 2 columns grid with 2:1 width ratio
+  ax = fig.add_subplot(gs[0, 0], projection='3d')  # Add subplot on the left
+  ax2 = fig.add_subplot(gs[0, 1])  # Add empty subplot on the right with half width
+  ax2.set_facecolor('white')
+
+
+  RightText = "Learning rate :" + str(Data[idx][2]) + "\n\n\nBias correction: " +  str(Data[idx][3]) + "\n\n\nLine search: " +  str(Data[idx][4]) 
+
+  ax2.text(-.15, 0.5, RightText, ha='left', va='center', fontsize=20)
+
+  ax2.set_xticks([])
+  ax2.set_yticks([])
+  
+  ax2.spines['top'].set_visible(False)
+  ax2.spines['bottom'].set_visible(False)
+  ax2.spines['left'].set_visible(False)
+  ax2.spines['right'].set_visible(False)
   ax.plot_surface(X1_grid, X2_grid, Z, cmap=cm.coolwarm, alpha=0.6)
   ax.plot_wireframe(X1_grid, X2_grid, Z, color='black', linewidth=0.1,  alpha=0.2)
-  ax.set_xlabel('X1')
-  ax.set_ylabel('X2')
+  ax.set_xlabel('X1',  fontsize=14)
+  ax.set_ylabel('X2',  fontsize=14)
+  ax.set_title("Optimizing " + Data[idx][0] + " with " + Data[idx][1] + " :", fontsize=20)
   #ax.set_zlabel('Loss Function Value')
   ax.xaxis.labelpad = 20
 
