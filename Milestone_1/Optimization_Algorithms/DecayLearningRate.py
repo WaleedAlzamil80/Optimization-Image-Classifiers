@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
-def DecayLearningRate(eta, t = 1, decay_rate = 0.01, decay_type = None)
+def DecayLearningRate(eta, t = 1, decay_rate = 0.01, decay_type = None):
     """
     Different techniques for the decay learning rate.
 
