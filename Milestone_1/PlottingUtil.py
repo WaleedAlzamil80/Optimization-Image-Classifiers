@@ -114,6 +114,9 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
 
   ax.set_zlim(min_Z  , max_Z - offset)
 
-  
+  Text = Data[idx][0] +"_"+ Data[idx][1] + "_Lrate:" + str(Data[idx][2]) + "_Bcorr:" +  str(Data[idx][3]) + "_Lsearch:" +  str(Data[idx][4]) +".png"
+
+
+  plt.savefig("imgs/"+Text)
 
   plt.show()
