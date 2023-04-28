@@ -25,13 +25,13 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
   offset1 = (2 * (rangeX1))*0.05
   offset2 = (2 * (rangeX2))*0.05
   if (inputRangeX1 == None ):
-    X1_range = np.arange(-rangeX1 - offset1  ,rangeX1 + offset1 + stepX1 ,       stepX1     ) 
+    X1_range = np.arange(-rangeX1 - offset1  ,rangeX1 + offset1 + stepX1 ,       stepX1 ,dtype=np.float32    ) 
   else :
     s = min (inputRangeX1[0],X_vals[0][0] )
     e = max(inputRangeX1[1],X_vals[0][0] )
     X1_range = np.arange( s , e, (e-s) / 500 )
   if (inputRangeX2 == None ):
-    X2_range = np.arange(-rangeX1 - offset2 , rangeX1 + offset2  + stepX2 ,         stepX2    )
+    X2_range = np.arange(-rangeX1 - offset2 , rangeX1 + offset2  + stepX2 ,         stepX2  ,dtype=np.float32    ) 
   else :
     s = min (inputRangeX2[0],X_vals[0][1] )
     e = max(inputRangeX2[1],X_vals[0][1] )
@@ -40,7 +40,7 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
 
 
   X1_grid, X2_grid = np.meshgrid(X1_range, X2_range)
-  Z = loss_function([X1_grid, X2_grid])
+  Z = loss_function(tf.Variable ([X1_grid, X2_grid]))
 
 
   fig = plt.figure(figsize=(18, 14), dpi=160)  # Double the width of the figure
