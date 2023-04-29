@@ -1,6 +1,6 @@
 # Optimization Algorithms for Deep Learning Models
 
-This repository contains code and a report for a project that compares the performance of several optimization algorithms commonly used in deep learning, including Stochastic Gradient Descent (SGD), Gradient Descent with Momentum (GDM), Adagrad, Adadelta, and Adam. The report evaluates the performance of these algorithms on various test functions with different shapes and numbers of local minima.
+In Milestone 1 we compared the performance of several optimization algorithms commonly used in deep learning, such as Stochastic Gradient Descent (SGD), Gradient Descent with Momentum (GDM), Adagrad, Adadelta, and Adam. The report evaluates the performance of these algorithms on various test functions with different shapes and different numbers of local minima.
 
 ## Abstract
 
@@ -22,9 +22,10 @@ Minimize f(x)
 
 where x ∈ Rn is the decision variable, f : Rn → R is the objective function.
 
-## Test Functions
+## Test Functions   
 
-We used test functions from the SFU optimization test function library, including the Eggholder function, Trid function, Matyas function, Three-Hump Camel function, Michalewicz function, and Styblinski-Tang function. These test functions represent different types of objective functions, including those with many local minima, bowl-shaped functions, plate-shaped functions, Valley-Shaped, Valley-Shaped, and other shapes. Additionally, we tested each algorithm on each function in a range of search spaces with different dimensions.
+
+We used various test functions from the [SFU optimization test function library](https://www.sfu.ca/~ssurjano/optimization.html), including the Eggholder function, Trid function, Matyas function, Three-Hump Camel function, Michalewicz function, and Styblinski-Tang function. These test functions represent different types of objective functions, involving those with many local minima, bowl-shaped functions, plate-shaped functions, Valley-Shaped, and other shapes. Additionally, we tested each algorithm on each function in a range of search spaces with different dimensions.
 
 ## How to Use
 
