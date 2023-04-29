@@ -1,4 +1,4 @@
-The functions categories listed below are some of the common functions and datasets used for testing optimization algorithms. They are grouped according to similarities in their significant physical properties and shapes. We have selected exactly one function from each category, as shown below:
+The functions categories listed below are some of the common functions used for testing optimization algorithms. They are grouped according to similarities in their significant physical properties and shapes. We have selected exactly one function from each category, as shown below:
 
 
 
