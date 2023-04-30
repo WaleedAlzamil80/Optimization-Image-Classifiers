@@ -12,7 +12,16 @@ from Loss_Functions.Ms1_StyblinskiTang_FunctionLoss import *
 from Loss_Functions.Ms1_Trid_FunctionLoss import *
 
 
-def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False):
+def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False,inputRangeZ = None):
+
+
+  fig = plt.figure(figsize=(18, 14), dpi=100)  # Double the width of the figure
+  gs = fig.add_gridspec(1, 2, width_ratios=[2, 1,])  # Define 1 row, 2 columns grid with 2:1 width ratio
+  ax = fig.add_subplot(gs[0, 0], projection='3d')  # Add subplot on the left
+
+
+
+
   loss_function = eval(Data[idx][0])
   X_vals = Data[idx][5]
   loss_vals = Data[idx][6]
@@ -29,12 +38,18 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
   else :
     s = min (inputRangeX1[0],X_vals[0][0] )
     e = max(inputRangeX1[1],X_vals[0][0] )
+
+    ax.set_xlim(s , e)
     X1_range = np.arange( s , e, (e-s) / 500 )
+  
+   
   if (inputRangeX2 == None ):
     X2_range = np.arange(-rangeX1 - offset2 , rangeX1 + offset2  + stepX2 ,         stepX2  ,dtype=np.float32    ) 
   else :
+    
     s = min (inputRangeX2[0],X_vals[0][1] )
     e = max(inputRangeX2[1],X_vals[0][1] )
+    ax.set_ylim(s , e)
     X2_range = np.arange( s , e, (e-s) / 500 )
 
 
@@ -43,10 +58,7 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
   Z = loss_function(tf.Variable ([X1_grid, X2_grid]))
 
 
-  fig = plt.figure(figsize=(18, 14), dpi=160)  # Double the width of the figure
-  gs = fig.add_gridspec(1, 2, width_ratios=[2, 1,])  # Define 1 row, 2 columns grid with 2:1 width ratio
-  ax = fig.add_subplot(gs[0, 0], projection='3d')  # Add subplot on the left
-
+  
   if (captions == True):
     ax2 = fig.add_subplot(gs[0, 1])  # Add empty subplot on the right with half width
     ax2.set_facecolor('white')
@@ -64,8 +76,7 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
     ax2.spines['left'].set_visible(False)
     ax2.spines['right'].set_visible(False)
   
-  ax.plot_surface(X1_grid, X2_grid, Z, cmap=cm.coolwarm, alpha=0.6)
-  ax.plot_wireframe(X1_grid, X2_grid, Z, color='black', linewidth=0.1,  alpha=0.2)
+  
   ax.set_xlabel('X1',  fontsize=14)
   ax.set_ylabel('X2',  fontsize=14)
 
@@ -88,17 +99,18 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
 
 
 
-  # Compute the directions of the arrows
-  X1_diff = np.diff(X1)
-  X2_diff = np.diff(X2)
-  
-  Z_trace_diff = np.diff(Z_trace)
- 
-  ax.quiver(X1[:-1], X2[:-1], Z_trace[:-1], X1_diff, X2_diff, Z_trace_diff, 
-           length=1, color='red', arrow_length_ratio=0.0001, linewidths=2)
+  ax.plot(X1[-1], X2[-1], Z_trace[-1], color='black', marker='x', linewidth=1.5, zorder=10,markersize = 8 )
 
+
+  ax.plot(X1, X2, Z_trace, color='black', linewidth=1.5, dashes=(5, 1), zorder=10)
+
+  
+
+  ax.plot_surface(X1_grid, X2_grid, Z, cmap=cm.coolwarm, alpha=0.6,  zorder= 1)
+
+  ax.plot_wireframe(X1_grid, X2_grid, Z, color='black', linewidth=0.1,  alpha=0.2,  zorder= 1)
   # Plot the last point of the X trace as a red sphere
-  ax.scatter(X1[-1], X2[-1], Z_trace[-1], s=100, color='red', marker='x')
+  
 
 
   # Get the minimum value of Z to adjust the plot limits
@@ -106,15 +118,19 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False)
 
   max_Z = np.max(Z)
 
-
+  #
+  
 
 
   offset = (max_Z - min_Z)*0.2
 
+  if (inputRangeZ == None):
+    ax.set_zlim(min_Z  , max_Z - offset)
+  else:
+    ax.set_zlim(inputRangeZ[0]  ,inputRangeZ[1])
 
-  ax.set_zlim(min_Z  , max_Z - offset)
+  Text = Data[idx][0] +"_"+ Data[idx][1]  + "_It:" + str(len(X_vals)-1) + "_Lrate:" + str(Data[idx][2]) + "_Bcorr:" +  str(Data[idx][3]) + "_Lsearch:" +  str(Data[idx][4]) +".png"
 
-  Text = Data[idx][0] +"_"+ Data[idx][1] + "_Lrate:" + str(Data[idx][2]) + "_Bcorr:" +  str(Data[idx][3]) + "_Lsearch:" +  str(Data[idx][4]) +".png"
 
 
 
