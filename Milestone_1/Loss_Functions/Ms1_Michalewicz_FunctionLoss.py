@@ -13,7 +13,7 @@ def Michalewicz(X, m = 10):
         tf.Tensor: The value of the Michalewicz function at X.
     """
 
-    i = np.array(range(X.shape[0]), dtype = np.float32).reshape(2,1) + 1
+    i = np.array(range(X.shape[0]), dtype = np.float32).reshape(X.shape[0],1) + 1
     i = tf.Variable(i)
 
     M = tf.sin(tf.math.multiply(tf.math.multiply(X, X), i) / np.pi)**(2 * m)
