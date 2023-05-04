@@ -1,8 +1,21 @@
 import tensorflow as tf
-import numpy as np
 from Optimization_Algorithms.LineSearch import *
 
-def GDM(loss_func, X_init, V_init, loss_val, X_val, eta = 0.01, beta = 0.9, bias_correction = False, line_search = False, t = 0, decay_type=None, decay_rate=None,epsilon=10e-8):
+def GDM(
+    loss_func,
+    X_init,
+    V_init,
+    loss_val,
+    X_val,
+    eta=0.01,
+    beta=0.9,
+    bias_correction=False,
+    line_search=False,
+    t=0,
+    decay_type=None,
+    decay_rate=None,
+    epsilon=10e-8
+):
     """
     Gradient Descent with Momentum optimization algorithm for updating the values of a given variable.
 
@@ -39,18 +52,18 @@ def GDM(loss_func, X_init, V_init, loss_val, X_val, eta = 0.01, beta = 0.9, bias
         V_corrected = V / (1 - tf.pow(beta, t))
     else:
         V_corrected = V
-    
+
     # Perform learning rate decay
     if decay_type is not None:
-      if decay_type == 'time-based':
-        eta = eta / (1 + decay_rate * t)
-      elif decay_type == 'step-based':
-        eta = eta * decay_rate ** tf.floor(t/1000)
-      elif decay_type == 'exponential':
-        eta = eta *  tf.math.pow(decay_rate, t)
-      elif decay_type == 'performance':
-        if len(loss_val) > 1 and abs(loss_val[-1] -loss_val[-2])>epsilon:
-          eta = eta * decay_rate
+        if decay_type == "time-based":
+            eta = eta / (1 + decay_rate * t)
+        elif decay_type == "step-based":
+            eta = eta * decay_rate ** tf.floor(t / 1000)
+        elif decay_type == "exponential":
+            eta = eta * tf.math.pow(decay_rate, t)
+        elif decay_type == "performance":
+            if len(loss_val) > 1 and abs(loss_val[-1] - loss_val[-2]) > epsilon:
+                eta = eta * decay_rate
 
     # line search (finding the optimal value for the learning rate)
     if line_search:

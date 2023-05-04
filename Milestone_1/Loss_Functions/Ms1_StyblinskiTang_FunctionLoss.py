@@ -1,5 +1,5 @@
-import numpy as np
 import tensorflow as tf
+
 
 def StyblinskiTang(X):
     """
@@ -13,7 +13,7 @@ def StyblinskiTang(X):
     """
 
     X = tf.cast(X, dtype=tf.float32)
-    f =  tf.subtract(tf.pow(X, 4), tf.multiply(16, tf.pow(X, 2)))
+    f = tf.subtract(tf.pow(X, 4), tf.multiply(16, tf.pow(X, 2)))
     s = tf.multiply(5, X)
 
     sum = tf.multiply(tf.add(f, s), 0.5)

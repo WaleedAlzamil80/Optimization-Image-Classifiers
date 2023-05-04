@@ -1,8 +1,21 @@
 import tensorflow as tf
-import numpy as np
 from Optimization_Algorithms.LineSearch import *
 
-def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 = 0.9, beta_2 = 0.99, eps = 1e-8, line_search = False, bias_correction = False, t = 0):
+def Adam(
+    loss_func,
+    X_init,
+    V_init,
+    S_init,
+    loss_val,
+    X_val,
+    eta=0.01,
+    beta_1=0.9,
+    beta_2=0.99,
+    eps=1e-8,
+    line_search=False,
+    bias_correction=False,
+    t=0,
+):
     """
     Adam optimization algorithm for updating the values of a given variable.
 
@@ -12,7 +25,7 @@ def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 
         - V_init: tf.Variable, the initial values for the first moment estimates (momentum).
         - S_init: tf.Variable, the initial values for the second moment estimates (RMSprop).
         - eta: float, the learning rate used to control the size of the update steps (default is 0.01).
-        - beta_1: float, the amount used to control how the momentum (exponentially weighted moving averages). 
+        - beta_1: float, the amount used to control how the momentum (exponentially weighted moving averages).
                   depending on the last values (default is 0.9).
         - beta_2: float, the amount used to control how the learning rate depend on the last values (default is 0.99).
         - eps: float, Ensure S in not zero by adding this number to it (default is 1e-8).
@@ -26,7 +39,7 @@ def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 
     Returns:
         None
     """
-    
+
     with tf.GradientTape(persistent=True) as tape:
         # Compute the current loss
         current_loss = loss_func(X_init)
@@ -35,8 +48,8 @@ def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 
     dx = tape.gradient(current_loss, X_init)
 
     # Compute the first and second moment estimates (momentum and RMSprop)
-    V = (beta_1 * V_init) + (1 - beta_1) * dx      # momentum
-    S = (beta_2 * S_init) + (1 - beta_2) * (dx**2) # RMSprop
+    V = (beta_1 * V_init) + (1 - beta_1) * dx  # momentum
+    S = (beta_2 * S_init) + (1 - beta_2) * (dx**2)  # RMSprop
 
     # bias correction
     if bias_correction:
@@ -45,7 +58,7 @@ def Adam(loss_func, X_init, V_init, S_init, loss_val, X_val, eta = 0.01, beta_1 
     else:
         V_corrected = V
         S_corrected = S
-    
+
     # line search (finding the optimal value for the learning rate)
     if line_search:
         for i in range(10):

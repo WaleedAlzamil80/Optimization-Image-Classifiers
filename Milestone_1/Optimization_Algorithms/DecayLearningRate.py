@@ -1,7 +1,9 @@
-import numpy as np
 import tensorflow as tf
 
-def DecayLearningRate(eta, t = 1, decay_rate = 0.01, decay_type = None,loss_val=None,epsilon=10e-8):
+
+def DecayLearningRate(
+    eta, t=1, decay_rate=0.01, decay_type=None, loss_val=None, epsilon=10e-8
+):
     """
     Different techniques for the decay learning rate.
 
@@ -14,17 +16,16 @@ def DecayLearningRate(eta, t = 1, decay_rate = 0.01, decay_type = None,loss_val=
 
     Returns:
       - eta: float, the new learning rate
-      """
+    """
 
     if decay_type is not None:
-      if decay_type == 'time-based':
-        eta = eta / (1 + decay_rate * t)
-      elif decay_type == 'step-based':
-        eta = eta * decay_rate ** tf.floor(t/1000)
-      elif decay_type == 'exponential':
-        eta = eta *  tf.math.pow(decay_rate, t)
-      elif decay_type == 'performance':
-        if len(loss_val) > 1 and abs(loss_val[-1] - loss_val[-2])>epsilon:
-          eta = eta * decay_rate
-
+        if decay_type == "time-based":
+            eta = eta / (1 + decay_rate * t)
+        elif decay_type == "step-based":
+            eta = eta * decay_rate ** tf.floor(t / 1000)
+        elif decay_type == "exponential":
+            eta = eta * tf.math.pow(decay_rate, t)
+        elif decay_type == "performance":
+            if len(loss_val) > 1 and abs(loss_val[-1] - loss_val[-2]) > epsilon:
+                eta = eta * decay_rate
     return eta

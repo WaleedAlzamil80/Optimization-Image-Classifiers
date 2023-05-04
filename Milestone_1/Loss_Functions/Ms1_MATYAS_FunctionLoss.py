@@ -1,10 +1,10 @@
-import numpy as np
 import tensorflow as tf
+
 
 def MATYAS(X):
     """
     Computes the value of the MATYAS function at a given point x using TensorFlow.
-    
+
     Parameters:
         X (tf.Tensor of shape (2, n)): A TensorFlow tensor representing the decision variable.
 
@@ -18,7 +18,7 @@ def MATYAS(X):
     x2sq = tf.math.multiply(X2, X2)
     sum1 = tf.math.multiply(tf.math.add(x1sq, x2sq), 0.26)
 
-    sum2 = tf.math.multiply(tf.math.multiply(X1,X2), -0.48)
+    sum2 = tf.math.multiply(tf.math.multiply(X1, X2), -0.48)
 
     result = tf.math.add(sum1, sum2)
 
