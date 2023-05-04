@@ -4,7 +4,12 @@ This project is divided into two milestones. The first milestone involves compar
  The results from the first milestone will be used to select the most effective optimization algorithm for training the neural network for the second milestone. The final goal is to achieve high accuracy in image classification using the selected algorithm and neural network architecture.
 
 ## Milestone 1:
-The problem we are addressing in this milestone is the comparison of different optimization algorithms on various types of test functions. Optimization algorithms are essential in the field of machine learning, as they are used to minimize the cost function of a model. Therefore, it is crucial to determine the best optimization algorithm for a specific problem.
+Optimization algorithms play a crucial role in many fields of science and engineering, from machine learning and data science to operations research and control engineering. These algorithms are designed to find the optimal solution to a given problem by iteratively improving a candidate solution based on some objective function.
+
+However, there are many different optimization algorithms, each with its own strengths and weaknesses. Some algorithms are better suited for certain types of problems than others, and some may converge faster or more reliably than others. Therefore, it is important to compare and evaluate different optimization algorithms on various types of test functions to determine which algorithm is best suited for a given problem.
+
+In this milestone, we will address the problem of comparing different optimization algorithms on various types of test functions.
+We will explore popular optimization algorithms
 
 ### Methods and Algorithms:
 We will compare the performance of the following optimization algorithms:
