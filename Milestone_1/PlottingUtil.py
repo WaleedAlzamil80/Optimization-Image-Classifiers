@@ -12,7 +12,7 @@ from Loss_Functions.Ms1_StyblinskiTang_FunctionLoss import *
 from Loss_Functions.Ms1_Trid_FunctionLoss import *
 
 
-def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False,inputRangeZ = None):
+def plot (Data, idx, idxEnd = None, inputRangeX1 = None, inputRangeX2 = None, captions = False,inputRangeZ = None, UpView = False):
 
 
   fig = plt.figure(figsize=(18, 14), dpi=100)  # Double the width of the figure
@@ -83,34 +83,36 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False,
   if (captions == True):
     ax.set_title("Optimizing " + Data[idx][0] + " with " + Data[idx][1] + " :", fontsize=20)
 
-
+  ax.plot_surface(X1_grid, X2_grid, Z, cmap=cm.coolwarm, alpha=0.6,  zorder= 1)
   
   ax.xaxis.labelpad = 20
 
 
+  colorA = ["black", "red", "green", "blue", "purple"]
 
-  # Plot the trace of X in 3D
-  X1 = [x[0][0] for x in X_vals]
-  X2 = [x[1][0] for x in X_vals]
-  Z_trace = [x[0] for x in loss_vals]
+  if (idxEnd == None):
+    idxEnd = idx + 1
+
+  for i in range (idx , idxEnd):
+    # Plot the trace of X in 3D
+    X_vals = Data[i][5]
+    loss_vals = Data[i][6]
+    X1 = [x[0][0] for x in X_vals]
+    X2 = [x[1][0] for x in X_vals]
+    Z_trace = [x[0] for x in loss_vals]
 
 
 
+    ax.plot(X1[-1], X2[-1], Z_trace[-1], color=colorA[i], marker='x', linewidth=0.7, zorder=10,markersize = 8 , alpha=0.4)
+    ax.plot(X1, X2, Z_trace, color=colorA[i], linewidth=0.7, dashes=(5, 1), zorder=10, alpha=0.4 )
+
+    
 
 
 
-  ax.plot(X1[-1], X2[-1], Z_trace[-1], color='black', marker='x', linewidth=1.5, zorder=10,markersize = 8 )
-
-
-  ax.plot(X1, X2, Z_trace, color='black', linewidth=1.5, dashes=(5, 1), zorder=10)
-
-  
-
-  ax.plot_surface(X1_grid, X2_grid, Z, cmap=cm.coolwarm, alpha=0.6,  zorder= 1)
-
-  ax.plot_wireframe(X1_grid, X2_grid, Z, color='black', linewidth=0.1,  alpha=0.2,  zorder= 1)
-  # Plot the last point of the X trace as a red sphere
-  
+  ax.plot_wireframe(X1_grid, X2_grid, Z, color="black", linewidth=0.1,  alpha=0.2,  zorder= 1)
+    # Plot the last point of the X trace as a red sphere
+    
 
 
   # Get the minimum value of Z to adjust the plot limits
@@ -131,8 +133,10 @@ def plot (Data, idx, inputRangeX1 = None, inputRangeX2 = None, captions = False,
 
   Text = Data[idx][0] +"_"+ Data[idx][1]  + "_It:" + str(len(X_vals)-1) + "_Lrate:" + str(Data[idx][2]) + "_Bcorr:" +  str(Data[idx][3]) + "_Lsearch:" +  str(Data[idx][4]) +".png"
 
+  if (UpView):
+    ax.set_zticks([])
 
-
+    ax.view_init(elev=90, azim=0)
 
   plt.savefig("imgs/"+Text)
 
