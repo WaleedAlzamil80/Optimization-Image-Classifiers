@@ -6,6 +6,15 @@ sns.set()
 from sklearn.metrics import confusion_matrix
 import itertools
 
+def plotLoss(history, criteria, arch):
+  plt.plot(history.history[criteria] , label = "training " + criteria)
+  plt.plot(history.history["val_" + criteria], label = "validation " + criteria)
+  plt.xlabel("The Iteration Number")
+  plt.ylabel(criteria.upper())
+  plt.title(arch)
+  plt.legend()
+  plt.show()
+
 def display_images(digits, predictions, labels, title, classes):
 
   n = 10
