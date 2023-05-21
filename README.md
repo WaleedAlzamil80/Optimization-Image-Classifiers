@@ -28,3 +28,5 @@ Additionally, we have experimented with some improvements to some of the previou
 ## Milestone 2:
 Under working...
 
+## Future work:
+We plan to apply the extension of Adam that we used in Milestone 1 to train the models that we developed in Milestone 2. Then, we will compare the performance of the models and assess whether the LineSearch algorithm is worth the additional computation. We will also investigate the effect of different loss functions on the results.
