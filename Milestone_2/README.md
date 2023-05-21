@@ -2,6 +2,7 @@
 
 - optimizer: Adam
 - Loss: categorical_crossentropy
+- metrics: accuracy
 - epocks: 50
 - callback: earlystopping after 3 epochs if the val_loss didn't decrease
 - train, test, validation:  42k, 10k, 8k
