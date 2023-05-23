@@ -26,7 +26,41 @@ Additionally, we have experimented with some improvements to some of the previou
 3. Line search algorithm
 
 ## Milestone 2:
-Under working...
+
+In Milestone 2 we're going to build 4 different deep learning architectures on a CiFar Image 100 below you can find the dataaset link.
+Since our problem dataset is an image classification.
+These **'CNN'** architectures have been widely used and adapted for various **'image classification'** tasks. They demonstrate the effectiveness of deep learning in computer vision and have paved the way for many advancements in the field.
+
+AlexNet, VGG, ResNet, and LeNet are some of the popular convolutional neural network (CNN) architectures used for image classification tasks.
+
+* **AlexNet**:
+**'AlexNet'** is a CNN architecture proposed by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton in 2012. It was the winning architecture in the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) in 2012, achieving a top-5 error rate of 15.3%. AlexNet introduced several key innovations, such as the use of ReLU activation functions, overlapping pooling, and dropout regularization, which made it possible to train deeper and more complex neural networks.
+
+* **VGG**:
+**'VGG'** (Visual Geometry Group) is a CNN architecture proposed by the Visual Geometry Group at the University of Oxford in 2014. VGG is known for its simplicity and uniformity in architecture, with a total of 16 convolutional and fully connected layers. VGG achieved high accuracy in the ILSVRC 2014 competition, with a top-5 error rate of 7.3%. VGG's architecture is characterized by using only 3x3 filters, which allows for a deeper network and better feature extraction.
+
+* **ResNet**:
+**'ResNet'** (Residual Network) is a CNN architecture proposed by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun in 2015. ResNet is known for its use of residualconnections to address the vanishing gradient problem that arises in very deep neural networks. ResNet achieved state-of-the-art performance in the ILSVRC 2015 competition, with a top-5 error rate of 3.57%. The residual connections in ResNet allow for the flow of information from one layer to another, even when the gradient becomes very small. This enables ResNet to train very deep networks with hundreds of layers.
+
+* **LeNet**: is a pioneering convolutional neural network (CNN) architecture proposed by Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner in 1998. It was designed for handwritten digit recognition and was one of the first successful applications of deep learning in computer vision.
+
+The **'LeNet'** architecture consists of a series of convolutional and pooling layers, followed by fully connected layers. The input to the network is a grayscale image of size 32x32 pixels, and the output is a probability distribution over the 10 possible digit classes (0-9).
+
+The original LeNet architecture consisted of two convolutional layers, followed by two fully connected layers. The first convolutional layer had 6 filters of size 5x5, while the second convolutional layer had 16 filters of size 5x5. The pooling layers were max pooling layers with a size of 2x2. The fully connected layers had 120 and 84 units, respectively, and used the sigmoid activation function. Finally, a softmax layer was used to produce the output probabilities.
+
+LeNet was a groundbreaking architecture because it demonstrated the effectiveness of deep learning for image classification tasks. It was able to achieve a classification accuracy of over 99% on the MNIST dataset of handwritten digits, which was a significant improvement over previous methods.
+
+Dataset:
+**'CIFAR-100'** is a dataset of 60,000 32x32 color images, belonging to 100 fine-grained object categories with 600 images per category. The dataset is split into 50,000 training images and 10,000 test images.
+
+Each image in the CIFAR-100 dataset belongs to only one of the 100 categories, and the categories are organized into 20 superclasses, each containing five fine-grained categories. The fine-grained categories are more specific than those in the related CIFAR-10 dataset, which has 10 coarse-grained categories.
+
+The CIFAR-100 dataset is commonly used as a benchmark for image classification tasks, particularly in the field of deep learning. It is often used to evaluate the performance of various convolutional neural network architectures and training techniques.
+
+The CIFAR-100 dataset is challenging because the images are small and low resolution, making it difficult to recognize fine-grained details. Additionally, the dataset contains many visually similar classes, making it hard to distinguish between them. However, the dataset is also diverse and contains a wide range of object categories, making it a useful testbed for evaluating the generalization performance of image classification models.
+
+https://www.cs.toronto.edu/~kriz/cifar.html
+
 
 ## Future work:
 We plan to apply the extension of Adam that we used in Milestone 1 to train the models that we developed in Milestone 2. Then, we will compare the performance of the models and assess whether the LineSearch algorithm is worth the additional computation. We will also investigate the effect of different loss functions on the results.
