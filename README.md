@@ -50,7 +50,8 @@ The original LeNet architecture consisted of two convolutional layers, followed 
 
 LeNet was a groundbreaking architecture because it demonstrated the effectiveness of deep learning for image classification tasks. It was able to achieve a classification accuracy of over 99% on the MNIST dataset of handwritten digits, which was a significant improvement over previous methods.
 
-Dataset:
+**Dataset**:
+
 **`CIFAR-100`** is a dataset of 60,000 32x32 color images, belonging to 100 fine-grained object categories with 600 images per category. The dataset is split into 50,000 training images and 10,000 test images.
 
 Each image in the CIFAR-100 dataset belongs to only one of the 100 categories, and the categories are organized into 20 superclasses, each containing five fine-grained categories. The fine-grained categories are more specific than those in the related CIFAR-10 dataset, which has 10 coarse-grained categories.
