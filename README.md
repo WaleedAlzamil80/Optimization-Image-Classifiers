@@ -42,13 +42,7 @@ VGG (Visual Geometry Group) is a CNN architecture proposed by the Visual Geometr
 * **ResNet**:
 ResNet (Residual Network) is a CNN architecture proposed by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun in 2015. ResNet is known for its use of residualconnections to address the vanishing gradient problem that arises in very deep neural networks. ResNet achieved state-of-the-art performance in the ILSVRC 2015 competition, with a top-5 error rate of 3.57%. The residual connections in ResNet allow for the flow of information from one layer to another, even when the gradient becomes very small. This enables ResNet to train very deep networks with hundreds of layers.
 
-* **LeNet**: is a pioneering convolutional neural network (CNN) architecture proposed by Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner in 1998. It was designed for handwritten digit recognition and was one of the first successful applications of deep learning in computer vision.
-
-The LeNet architecture consists of a series of convolutional and pooling layers, followed by fully connected layers. The input to the network is a grayscale image of size 32x32 pixels, and the output is a probability distribution over the 10 possible digit classes (0-9).
-
-The original LeNet architecture consisted of two convolutional layers, followed by two fully connected layers. The first convolutional layer had 6 filters of size 5x5, while the second convolutional layer had 16 filters of size 5x5. The pooling layers were max pooling layers with a size of 2x2. The fully connected layers had 120 and 84 units, respectively, and used the sigmoid activation function. Finally, a softmax layer was used to produce the output probabilities.
-
-LeNet was a groundbreaking architecture because it demonstrated the effectiveness of deep learning for image classification tasks. It was able to achieve a classification accuracy of over 99% on the MNIST dataset of handwritten digits, which was a significant improvement over previous methods.
+* **LeNet**: is a pioneering convolutional neural network (CNN) architecture proposed by Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner in 1998. It was designed for handwritten digit recognition and was one of the first successful applications of deep learning in computer vision. The LeNet architecture consists of a series of convolutional and pooling layers, followed by fully connected layers. The input to the network is a grayscale image of size 32x32 pixels, and the output is a probability distribution over the 10 possible digit classes (0-9).
 
 **Dataset**:
 
